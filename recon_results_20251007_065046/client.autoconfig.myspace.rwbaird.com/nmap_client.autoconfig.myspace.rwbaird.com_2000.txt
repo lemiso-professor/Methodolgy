@@ -1,0 +1,10 @@
+# Nmap 7.95 scan initiated Tue Oct  7 07:55:04 2025 as: /usr/lib/nmap/nmap --privileged -sV -p 2000 -oN recon_results_20251007_065046/client.autoconfig.myspace.rwbaird.com/nmap_client.autoconfig.myspace.rwbaird.com_2000.txt client.autoconfig.myspace.rwbaird.com
+Nmap scan report for client.autoconfig.myspace.rwbaird.com (54.158.106.85)
+Host is up (0.22s latency).
+rDNS record for 54.158.106.85: ec2-54-158-106-85.compute-1.amazonaws.com
+
+PORT     STATE SERVICE     VERSION
+2000/tcp open  cisco-sccp?
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Oct  7 07:57:49 2025 -- 1 IP address (1 host up) scanned in 164.86 seconds

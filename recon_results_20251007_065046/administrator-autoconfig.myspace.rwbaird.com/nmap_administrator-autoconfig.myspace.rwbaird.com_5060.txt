@@ -1,0 +1,10 @@
+# Nmap 7.95 scan initiated Tue Oct  7 09:02:49 2025 as: /usr/lib/nmap/nmap --privileged -sV -p 5060 -oN recon_results_20251007_065046/administrator-autoconfig.myspace.rwbaird.com/nmap_administrator-autoconfig.myspace.rwbaird.com_5060.txt administrator-autoconfig.myspace.rwbaird.com
+Nmap scan report for administrator-autoconfig.myspace.rwbaird.com (54.158.106.85)
+Host is up (0.23s latency).
+rDNS record for 54.158.106.85: ec2-54-158-106-85.compute-1.amazonaws.com
+
+PORT     STATE SERVICE VERSION
+5060/tcp open  sip?
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Oct  7 09:05:29 2025 -- 1 IP address (1 host up) scanned in 160.00 seconds

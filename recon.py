@@ -2,29 +2,30 @@
 import os
 import subprocess
 import datetime
+import sys
 
 # === CONFIG ===
-DOMAIN = "example.com"   # <-- change this to your target domain
-WORDLIST = "/path/to/SecLists/Discovery/DNS/subdomains-top1million-20000.txt"
-RESOLVERS = "/path/to/resolvers.txt"
+DOMAIN = "rwbaird.com"   # <-- change this to your target domain
+WORDLIST = "/home/sony/SecLists/Discovery/DNS/subdomains-top1million-110000.txt"
+RESOLVERS = "/home/sony/resolvers.txt"
 
 # Ensure output folder with timestamp
 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 OUTDIR = f"recon_{DOMAIN}_{timestamp}"
 os.makedirs(OUTDIR, exist_ok=True)
 
-def run_cmd(command, outfile=None):
-    """Run a shell command, save output if file given"""
-    print(f"\n[+] Running: {' '.join(command)}")
-    with subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True) as proc:
-        if outfile:
-            with open(outfile, "w") as f:
-                for line in proc.stdout:
-                    print(line.strip())
-                    f.write(line)
-        else:
-            for line in proc.stdout:
-                print(line.strip())
+def run_cmd(command, outfile=None, shell=False):
+    """Run a shell/list command, save output if file given. Raises on non-zero exit."""
+    print(f"\n[+] Running: {command if shell else ' '.join(command)}")
+    if outfile:
+        with open(outfile, "w") as f:
+            res = subprocess.run(command, stdout=f, stderr=subprocess.STDOUT, shell=shell, text=True)
+    else:
+        res = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=shell, text=True)
+        print(res.stdout)
+    if res.returncode != 0:
+        print(f"[!] Command exited with code {res.returncode}", file=sys.stderr)
+    return res.returncode
 
 # === PIPELINE ===
 
@@ -43,24 +44,21 @@ run_cmd([
     "-v"
 ])
 
-# 3. alterx (permutations)
-with open(f"{OUTDIR}/subdomains-dnsx.txt", "w") as f:
-    subprocess.run(f"cat {OUTDIR}/shuffledns.txt | alterx", shell=True, stdout=f)
+# 3. alterx (permutations) - produce subdomains-dnsx.txt
+# using shell pipeline to keep same behavior as your original
+run_cmd(f"cat {OUTDIR}/shuffledns.txt | alterx > {OUTDIR}/subdomains-dnsx.txt", shell=True, outfile=None)
 
 # 4. dnsx (resolving)
-with open(f"{OUTDIR}/dnsx_results.txt", "w") as f:
-    subprocess.run(f"cat {OUTDIR}/subdomains-dnsx.txt | dnsx", shell=True, stdout=f)
+run_cmd(f"cat {OUTDIR}/subdomains-dnsx.txt | dnsx > {OUTDIR}/dnsx_results.txt", shell=True)
 
-# 5. naabu (ports)
-with open(f"{OUTDIR}/open-ports.txt", "w") as f:
-    subprocess.run(f"cat {OUTDIR}/dnsx_results.txt | naabu -p -top-ports 100 -ep 22", shell=True, stdout=f)
+# 5. naabu (ports)  <-- FIXED: use -top-ports without -p
+# feed hosts from dnsx_results.txt via stdin, scan top 100 ports, exclude port 22 (use -ep or -exclude-ports)
+run_cmd(f"cat {OUTDIR}/dnsx_results.txt | naabu -top-ports 100 -ep 22 > {OUTDIR}/open-ports.txt", shell=True)
 
 # 6. httpx (HTTP probing)
-with open(f"{OUTDIR}/httpx.txt", "w") as f:
-    subprocess.run(f"cat {OUTDIR}/open-ports.txt | httpx -title -sc -cl -location -h -fr", shell=True, stdout=f)
+run_cmd(f"cat {OUTDIR}/open-ports.txt | httpx -title -sc -cl -location -h -fr > {OUTDIR}/httpx.txt", shell=True)
 
 # 7. katana (crawl endpoints)
-with open(f"{OUTDIR}/katana_endpoints.txt", "w") as f:
-    subprocess.run(f"cat {OUTDIR}/shuffledns.txt | katana -jsl", shell=True, stdout=f)
+run_cmd(f"cat {OUTDIR}/shuffledns.txt | katana -jsl > {OUTDIR}/katana_endpoints.txt", shell=True)
 
 print(f"\n[✔] Recon completed. Results saved in: {OUTDIR}")

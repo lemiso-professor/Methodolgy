@@ -1,0 +1,10 @@
+# Nmap 7.95 scan initiated Tue Oct  7 08:56:54 2025 as: /usr/lib/nmap/nmap --privileged -sV -p 8008 -oN recon_results_20251007_065046/autoconfig-db.myspace.rwbaird.com/nmap_autoconfig-db.myspace.rwbaird.com_8008.txt autoconfig-db.myspace.rwbaird.com
+Nmap scan report for autoconfig-db.myspace.rwbaird.com (54.158.106.85)
+Host is up (0.21s latency).
+rDNS record for 54.158.106.85: ec2-54-158-106-85.compute-1.amazonaws.com
+
+PORT     STATE SERVICE    VERSION
+8008/tcp open  http-proxy FortiGuard Web Filtering
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Oct  7 08:57:03 2025 -- 1 IP address (1 host up) scanned in 8.82 seconds

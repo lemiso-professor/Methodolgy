@@ -1,0 +1,9 @@
+# Nmap 7.95 scan initiated Tue Oct  7 06:50:47 2025 as: /usr/lib/nmap/nmap --privileged -sV -p 5060 -oN recon_results_20251007_065046/content.rwbaird.com/nmap_content.rwbaird.com_5060.txt content.rwbaird.com
+Nmap scan report for content.rwbaird.com (50.59.62.141)
+Host is up (0.23s latency).
+
+PORT     STATE SERVICE VERSION
+5060/tcp open  sip?
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Oct  7 06:53:28 2025 -- 1 IP address (1 host up) scanned in 160.84 seconds
