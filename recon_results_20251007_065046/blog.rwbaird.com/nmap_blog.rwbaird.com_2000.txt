@@ -1,9 +1,0 @@
-# Nmap 7.95 scan initiated Tue Oct  7 06:50:47 2025 as: /usr/lib/nmap/nmap --privileged -sV -p 2000 -oN recon_results_20251007_065046/blog.rwbaird.com/nmap_blog.rwbaird.com_2000.txt blog.rwbaird.com
-Nmap scan report for blog.rwbaird.com (50.59.62.152)
-Host is up (0.22s latency).
-
-PORT     STATE SERVICE     VERSION
-2000/tcp open  cisco-sccp?
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Tue Oct  7 06:53:32 2025 -- 1 IP address (1 host up) scanned in 165.27 seconds

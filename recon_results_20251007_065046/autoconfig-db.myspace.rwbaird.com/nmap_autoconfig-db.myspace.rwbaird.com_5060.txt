@@ -1,1 +1,0 @@
-# Nmap 7.95 scan initiated Tue Oct  7 09:16:48 2025 as: /usr/lib/nmap/nmap --privileged -sV -p 5060 -oN recon_results_20251007_065046/autoconfig-db.myspace.rwbaird.com/nmap_autoconfig-db.myspace.rwbaird.com_5060.txt autoconfig-db.myspace.rwbaird.com

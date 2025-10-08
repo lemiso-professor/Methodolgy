@@ -1,2 +1,0 @@
-# Nmap 7.95 scan initiated Tue Oct  7 06:56:21 2025 as: /usr/lib/nmap/nmap --privileged -sV -p 8008 -oN recon_results_20251007_065046/legacy.rwbaird.com/nmap_legacy.rwbaird.com_8008.txt legacy.rwbaird.com
-# Nmap done at Tue Oct  7 06:56:25 2025 -- 1 IP address (0 hosts up) scanned in 3.24 seconds

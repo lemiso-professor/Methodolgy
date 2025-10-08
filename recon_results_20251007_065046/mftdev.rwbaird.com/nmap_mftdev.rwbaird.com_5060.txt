@@ -1,2 +1,0 @@
-# Nmap 7.95 scan initiated Tue Oct  7 07:10:12 2025 as: /usr/lib/nmap/nmap --privileged -sV -p 5060 -oN recon_results_20251007_065046/mftdev.rwbaird.com/nmap_mftdev.rwbaird.com_5060.txt mftdev.rwbaird.com
-# Nmap done at Tue Oct  7 07:10:16 2025 -- 1 IP address (0 hosts up) scanned in 3.22 seconds

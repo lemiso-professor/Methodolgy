@@ -1,9 +1,0 @@
-# Nmap 7.95 scan initiated Tue Oct  7 08:54:01 2025 as: /usr/lib/nmap/nmap --privileged -sV -p 5060 -oN recon_results_20251007_065046/staging.rwbaird.com/nmap_staging.rwbaird.com_5060.txt staging.rwbaird.com
-Nmap scan report for staging.rwbaird.com (50.59.62.152)
-Host is up (0.22s latency).
-
-PORT     STATE SERVICE VERSION
-5060/tcp open  sip?
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Tue Oct  7 08:56:41 2025 -- 1 IP address (1 host up) scanned in 160.00 seconds

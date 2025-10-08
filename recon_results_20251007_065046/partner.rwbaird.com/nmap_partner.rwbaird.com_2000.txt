@@ -1,2 +1,0 @@
-# Nmap 7.95 scan initiated Tue Oct  7 09:06:59 2025 as: /usr/lib/nmap/nmap --privileged -sV -p 2000 -oN recon_results_20251007_065046/partner.rwbaird.com/nmap_partner.rwbaird.com_2000.txt partner.rwbaird.com
-# Nmap done at Tue Oct  7 09:07:02 2025 -- 1 IP address (0 hosts up) scanned in 3.23 seconds
